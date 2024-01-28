@@ -45,13 +45,26 @@
             app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
         <ImageView
+            android:id="@+id/imgKotlin"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:contentDescription="Imagen de Kotlin"
             android:src="@drawable/android_kotlin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtParagraph1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/darkGray"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgKotlin">
+        </View>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
