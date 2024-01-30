@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCountry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@color/black"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/txtCountryName"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"
+            tools:ignore="InefficientWeight" />
+
+        <ImageView
+            android:id="@+id/imgOpenMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/imgOpenMap"
+            android:src="@drawable/icon_map"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
