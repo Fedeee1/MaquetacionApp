@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MaquetacionApp</string>
+    <string name="txtTitle">Título</string>
+    <string name="txtFirstParagraph">Párrafo uno</string>
+    <string name="txtSecondParagraph">Párrafo dos</string>
+    <string name="contentImgKotlin">Imagen de Kotlin</string>
+    <string name="txtThirdParagraph">Párrafo tres</string>
+    <string name="txtFourthParagraph">Párrafo cuatro</string>
+    <string name="txtFifthParagraph">Párrafo cinco</string>
 </resources>

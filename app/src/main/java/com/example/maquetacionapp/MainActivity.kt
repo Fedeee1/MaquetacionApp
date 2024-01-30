@@ -2,9 +2,7 @@ package com.example.maquetacionapp
 
 /*
 
-Una pantalla dentro de un scrollview, para garantizar que vaya a poder verse todoo,
-sobre todoo en android mucho cuidado con esto, hay pantallas que tú las pruebas en tu super móvil o emulador,
-y siempre hay que pensar que existen millones de móviles con pantallas más pequeñas...
+Una pantalla dentro de un scrollview, para garantizar que vaya a poder verse todoo
 
 La pantalla de arriba a abajo:
     Un título.

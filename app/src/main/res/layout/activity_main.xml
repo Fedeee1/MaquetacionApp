@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/red"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,31 +15,40 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Título"
-            android:textSize="20sp"
             android:layout_marginTop="20dp"
+            android:text="@string/txtTitle"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtParagraph1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Párrafo uno"
-            android:textSize="20sp"
             android:layout_marginTop="30dp"
+            android:text="@string/txtFirstParagraph"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingHorizontal="5dp"
+
             app:layout_constraintEnd_toStartOf="@id/txtParagraph2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
         <TextView
             android:id="@+id/txtParagraph2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Párrafo dos"
-            android:textSize="20sp"
             android:layout_marginTop="30dp"
+            android:text="@string/txtSecondParagraph"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingHorizontal="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtParagraph1"
             app:layout_constraintTop_toTopOf="@id/txtTitle" />
@@ -48,23 +57,85 @@
             android:id="@+id/imgKotlin"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:contentDescription="Imagen de Kotlin"
-            android:src="@drawable/android_kotlin"
+            android:contentDescription="@string/contentImgKotlin"
+            android:src="@drawable/kotlin_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtParagraph1"/>
+            app:layout_constraintTop_toBottomOf="@id/txtParagraph1" />
 
-        <View
+
+        <LinearLayout
+            android:id="@+id/constraintRecycler"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@color/darkGray"
-            android:layout_marginTop="10dp"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgKotlin">
-        </View>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerElements"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"/>
 
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerDescription"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintRecycler"/>
+
+        <TextView
+            android:id="@+id/txtParagraph3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/txtThirdParagraph"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/txtParagraph4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerDescription"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtParagraph4"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/txtFourthParagraph"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/txtParagraph5"
+            app:layout_constraintStart_toEndOf="@id/txtParagraph3"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerDescription"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtParagraph5"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/txtFifthParagraph"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtParagraph4"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerDescription"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
