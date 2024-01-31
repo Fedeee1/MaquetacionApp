@@ -1,4 +1,4 @@
-package com.example.maquetacionapp
+package com.example.maquetacionapp.views
 
 /*
 
@@ -28,10 +28,39 @@ y el número de elementos que aparecen en la caja.
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
+import androidx.lifecycle.viewModelScope
+import com.example.maquetacionapp.adapters.ViewPagerAdapter
+import com.example.maquetacionapp.data.User
+import com.example.maquetacionapp.databinding.ActivityMainBinding
+import com.example.maquetacionapp.viewModels.MainViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel by viewModels<MainViewModel>()
+    private var listUsers: List<User> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.txtParagraph1.text = viewModel.createParagraphRandom(50, 400)
+        binding.txtParagraph2.text = viewModel.createParagraphRandom(50, 400)
+
+        viewModel.viewModelScope.launch {
+            viewModel.listUsersFlow.collect{
+                listUsers = it
+            }
+        }
+        initAdapter(listUsers)
+    }
+    private fun initAdapter(listUsers: List<User>){
+        var viewPagerAdapter = ViewPagerAdapter(listUsers)
+        binding.viewPagerDescription.adapter = viewPagerAdapter
+        binding.viewPagerDescription.offscreenPageLimit = 2
+        binding.viewPagerDescription.overScrollMode = View.OVER_SCROLL_ALWAYS
     }
 }

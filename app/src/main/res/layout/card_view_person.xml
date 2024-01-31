@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCountry"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/black"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtNameUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Texto"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            tools:ignore="InefficientWeight" />
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:contentDescription=""
+            android:src="@drawable/icoon_feed"/>
+
+        <TextView
+            android:id="@+id/txtAgeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Texto"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            tools:ignore="InefficientWeight" />
+
+        <TextView
+            android:id="@+id/txtSexUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Texto"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            tools:ignore="InefficientWeight" />
+
+        <TextView
+            android:id="@+id/txtDescriptionUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Número"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            tools:ignore="InefficientWeight" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
