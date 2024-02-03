@@ -1,4 +1,4 @@
-package com.example.maquetacionapp.adapters
+package com.example.maquetacionapp.ui.main.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maquetacionapp.R
 import com.example.maquetacionapp.data.User
@@ -32,16 +31,16 @@ class ViewPagerAdapter(viewPagerList: List<User>) : RecyclerView.Adapter<ViewPag
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view_person, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view_user, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewPagerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var image = Uri.parse(viewPagerList[position].image)
         holder.txtNameUser.text = viewPagerList[position].name
-        holder.txtAgeUser.text = viewPagerList[position].age.toString()
-        holder.txtSexUser.text = viewPagerList[position].sex
+        holder.txtAgeUser.text = "Edad: " + viewPagerList[position].age.toString()
+        holder.txtSexUser.text = "Sexo: " + viewPagerList[position].sex
         holder.txtDescriptionUser.text = viewPagerList[position].description
         Picasso.get()
              .load(image)

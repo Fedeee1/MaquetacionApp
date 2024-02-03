@@ -1,4 +1,4 @@
-package com.example.maquetacionapp.views
+package com.example.maquetacionapp.ui.main
 
 /*
 
@@ -29,12 +29,18 @@ y el número de elementos que aparecen en la caja.
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
-import com.example.maquetacionapp.adapters.ViewPagerAdapter
+import com.example.maquetacionapp.R
+import com.example.maquetacionapp.R.id.iconElement
+import com.example.maquetacionapp.R.id.txtElement
+import com.example.maquetacionapp.R.id.txtNumberElement
+import com.example.maquetacionapp.data.Element
 import com.example.maquetacionapp.data.User
 import com.example.maquetacionapp.databinding.ActivityMainBinding
-import com.example.maquetacionapp.viewModels.MainViewModel
+import com.example.maquetacionapp.ui.main.adapter.ViewPagerAdapter
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
     private var listUsers: List<User> = mutableListOf()
+    private var listElements: List<Element> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,17 +57,49 @@ class MainActivity : AppCompatActivity() {
         binding.txtParagraph1.text = viewModel.createParagraphRandom(50, 400)
         binding.txtParagraph2.text = viewModel.createParagraphRandom(50, 400)
 
+        binding.txtParagraph3.text = viewModel.createParagraphRandom(30, 100)
+        binding.txtParagraph4.text = viewModel.createParagraphRandom(30, 100)
+        binding.txtParagraph5.text = viewModel.createParagraphRandom(30, 100)
+
+
         viewModel.viewModelScope.launch {
-            viewModel.listUsersFlow.collect{
+            viewModel.listUsersFlow.collect {
                 listUsers = it
+            }
+
+        }
+        viewModel.viewModelScope.launch {
+            viewModel.listElementsFlow.collect {
+                listElements = it
             }
         }
         initAdapter(listUsers)
+        binding.circleIndicatorViewPager.setViewPager(binding.viewPagerDescription)
+
+        addElement(listElements)
+        binding.btnAddElement.setOnClickListener {
+            addElement(viewModel.addElementViewModel())
+        }
     }
     private fun initAdapter(listUsers: List<User>){
         var viewPagerAdapter = ViewPagerAdapter(listUsers)
         binding.viewPagerDescription.adapter = viewPagerAdapter
-        binding.viewPagerDescription.offscreenPageLimit = 2
         binding.viewPagerDescription.overScrollMode = View.OVER_SCROLL_ALWAYS
+    }
+    private fun addElement(listElements: List<Element>){
+        for (i in listElements.indices){
+            val inflate = layoutInflater.inflate(R.layout.linear_emelents_include, findViewById(R.id.linearElementInclude), false)
+            inflate.findViewById<TextView>(txtElement).text = listElements[i].text
+            inflate.findViewById<TextView>(txtNumberElement).text = listElements[i].number
+            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icoon_feed)
+            binding.linearElements.addView(inflate)
+        }
+    }
+    private fun addElement(element: Element){
+            val inflate = layoutInflater.inflate(R.layout.linear_emelents_include, findViewById(R.id.linearElementInclude), false)
+            inflate.findViewById<TextView>(txtElement).text = element.text
+            inflate.findViewById<TextView>(txtNumberElement).text = element.number
+            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icoon_feed)
+            binding.linearElements.addView(inflate)
     }
 }
