@@ -85,23 +85,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgKotlin">
-
         </LinearLayout>
+
 
         <ImageButton
             android:id="@+id/btnAddElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_add"
             android:layout_gravity="right|bottom"
-            android:background="@color/transparent"
-
-            android:padding="5dp"
-            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/imgAddElement"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
+            android:background="@color/transparent"
+            android:padding="5dp"
+            android:src="@drawable/icon_add"
+            app:layout_constraintBottom_toBottomOf="@id/linearElements"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/linearElements"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerDescription"
@@ -140,25 +141,25 @@
             android:id="@+id/txtParagraph4"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:text="@string/txtFourthParagraph"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/txtParagraph5"
             app:layout_constraintStart_toEndOf="@id/txtParagraph3"
-            app:layout_constraintTop_toTopOf="@id/txtParagraph3"/>
+            app:layout_constraintTop_toTopOf="@id/txtParagraph3"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/txtParagraph5"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:text="@string/txtFifthParagraph"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtParagraph4"
-            app:layout_constraintTop_toTopOf="@id/txtParagraph3"/>
+            app:layout_constraintTop_toTopOf="@id/txtParagraph3"
+            tools:ignore="TextSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

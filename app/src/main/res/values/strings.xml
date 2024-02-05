@@ -7,4 +7,13 @@
     <string name="txtThirdParagraph">Párrafo tres</string>
     <string name="txtFourthParagraph">Párrafo cuatro</string>
     <string name="txtFifthParagraph">Párrafo cinco</string>
+    <string name="txtNumberElement">Número</string>
+    <string name="txtTextElement">Texto</string>
+    <string name="imgElement">Icono de elemento</string>
+    <string name="imgUser">Imagen de usuario</string>
+    <string name="txtAgeUser">Edad</string>
+    <string name="txtDescriptionUser">Descripción</string>
+    <string name="txtNameUser">Nombre</string>
+    <string name="txtSexUser">Sexo</string>
+    <string name="imgAddElement">Imagen para añadir elemento</string>
 </resources>

@@ -28,15 +28,21 @@ y el número de elementos que aparecen en la caja.
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract.Constants
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import com.example.maquetacionapp.R
 import com.example.maquetacionapp.R.id.iconElement
 import com.example.maquetacionapp.R.id.txtElement
 import com.example.maquetacionapp.R.id.txtNumberElement
+import com.example.maquetacionapp.commons.MAX_NUM_OF_CHARS_LAST_PARAGRAPHS
+import com.example.maquetacionapp.commons.MAX_NUM_OF_CHARS_PARAGRAPHS
+import com.example.maquetacionapp.commons.MIN_NUM_OF_CHARS_LAST_PARAGRAPHS
+import com.example.maquetacionapp.commons.MIN_NUM_OF_CHARS_PARAGRAPHS
 import com.example.maquetacionapp.data.Element
 import com.example.maquetacionapp.data.User
 import com.example.maquetacionapp.databinding.ActivityMainBinding
@@ -54,12 +60,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.txtParagraph1.text = viewModel.createParagraphRandom(50, 400)
-        binding.txtParagraph2.text = viewModel.createParagraphRandom(50, 400)
+        binding.txtParagraph1.text = viewModel.createParagraphRandom(MIN_NUM_OF_CHARS_PARAGRAPHS, MAX_NUM_OF_CHARS_PARAGRAPHS)
+        binding.txtParagraph2.text = viewModel.createParagraphRandom(MIN_NUM_OF_CHARS_PARAGRAPHS,  MAX_NUM_OF_CHARS_PARAGRAPHS)
 
-        binding.txtParagraph3.text = viewModel.createParagraphRandom(30, 100)
-        binding.txtParagraph4.text = viewModel.createParagraphRandom(30, 100)
-        binding.txtParagraph5.text = viewModel.createParagraphRandom(30, 100)
+        binding.txtParagraph3.text = viewModel.createParagraphRandom(MIN_NUM_OF_CHARS_LAST_PARAGRAPHS, MAX_NUM_OF_CHARS_LAST_PARAGRAPHS)
+        binding.txtParagraph4.text = viewModel.createParagraphRandom(MIN_NUM_OF_CHARS_LAST_PARAGRAPHS, MAX_NUM_OF_CHARS_LAST_PARAGRAPHS)
+        binding.txtParagraph5.text = viewModel.createParagraphRandom(MIN_NUM_OF_CHARS_LAST_PARAGRAPHS, MAX_NUM_OF_CHARS_LAST_PARAGRAPHS)
 
 
         viewModel.viewModelScope.launch {
@@ -80,26 +86,33 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddElement.setOnClickListener {
             addElement(viewModel.addElementViewModel())
         }
+
     }
     private fun initAdapter(listUsers: List<User>){
-        var viewPagerAdapter = ViewPagerAdapter(listUsers)
+        val viewPagerAdapter = ViewPagerAdapter(listUsers)
         binding.viewPagerDescription.adapter = viewPagerAdapter
         binding.viewPagerDescription.overScrollMode = View.OVER_SCROLL_ALWAYS
     }
     private fun addElement(listElements: List<Element>){
         for (i in listElements.indices){
-            val inflate = layoutInflater.inflate(R.layout.linear_emelents_include, findViewById(R.id.linearElementInclude), false)
+            val inflate = layoutInflater.inflate(R.layout.card_view_emelents, findViewById(R.id.linearElementInclude), false)
             inflate.findViewById<TextView>(txtElement).text = listElements[i].text
             inflate.findViewById<TextView>(txtNumberElement).text = listElements[i].number
-            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icoon_feed)
+            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icon_edit)
+            inflate.findViewById<ImageView>(iconElement).setOnClickListener {
+
+            }
             binding.linearElements.addView(inflate)
         }
     }
     private fun addElement(element: Element){
-            val inflate = layoutInflater.inflate(R.layout.linear_emelents_include, findViewById(R.id.linearElementInclude), false)
+            val inflate = layoutInflater.inflate(R.layout.card_view_emelents, findViewById(R.id.linearElementInclude), false)
             inflate.findViewById<TextView>(txtElement).text = element.text
             inflate.findViewById<TextView>(txtNumberElement).text = element.number
-            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icoon_feed)
+            inflate.findViewById<ImageView>(iconElement).setImageResource(R.drawable.icon_edit)
+            inflate.findViewById<ImageView>(iconElement).setOnClickListener{
+
+        }
             binding.linearElements.addView(inflate)
     }
 }

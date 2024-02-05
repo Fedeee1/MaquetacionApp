@@ -11,9 +11,7 @@ import com.example.maquetacionapp.R
 import com.example.maquetacionapp.data.User
 import com.squareup.picasso.Picasso
 
-class ViewPagerAdapter(viewPagerList: List<User>) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
-
-    private var viewPagerList = viewPagerList
+class ViewPagerAdapter(private var viewPagerList: List<User>) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var imgUser: ImageView
@@ -37,10 +35,10 @@ class ViewPagerAdapter(viewPagerList: List<User>) : RecyclerView.Adapter<ViewPag
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var image = Uri.parse(viewPagerList[position].image)
+        val image = Uri.parse(viewPagerList[position].image)
         holder.txtNameUser.text = viewPagerList[position].name
-        holder.txtAgeUser.text = "Edad: " + viewPagerList[position].age.toString()
-        holder.txtSexUser.text = "Sexo: " + viewPagerList[position].sex
+        holder.txtAgeUser.text = "Edad: ${viewPagerList[position].age}"
+        holder.txtSexUser.text = "Sexo: ${viewPagerList[position].sex}"
         holder.txtDescriptionUser.text = viewPagerList[position].description
         Picasso.get()
              .load(image)
