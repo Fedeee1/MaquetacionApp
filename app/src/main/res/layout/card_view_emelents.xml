@@ -1,48 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardUsers"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/linearElementInclude"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:orientation="horizontal"
             android:background="@color/black"
-            android:gravity="center_vertical|center_horizontal">
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/iconElement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@string/imgElement"
-                    android:src="@drawable/icoon_feed"/>
+            <ImageView
+                android:id="@+id/iconElement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/imgElement"
+                android:src="@drawable/icon_edit" />
 
-                <TextView
-                    android:id="@+id/txtElement"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="@string/txtTextElement"
-                    android:maxLines="1"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="5dp"/>
+            <TextView
+                android:id="@+id/txtElement"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:text="@string/txtTextElement"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtNumberElement"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/txtNumberElement"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    tools:ignore="TextSizeCheck" />
+            <TextView
+                android:id="@+id/txtNumberElement"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/txtNumberElement"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:ignore="TextSizeCheck" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearEditTextElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/editChangeText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Editar texto"
+                android:layout_marginStart="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <ImageButton
+                android:id="@+id/btnAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@color/transparent"
+                android:contentDescription="Modificar texto"
+                android:padding="5dp"
+                android:src="@drawable/icon_check" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </androidx.cardview.widget.CardView>
 

@@ -1,7 +1,16 @@
 package com.example.maquetacionapp.ui.main
 
+import android.content.Context
+import android.view.View
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
 import com.example.maquetacionapp.R
 import com.example.maquetacionapp.commons.MAX_NUM_OF_CHARS_ELEMENTS
 import com.example.maquetacionapp.commons.MAX_NUM_OF_ELEMENTS
@@ -120,5 +129,4 @@ class MainViewModel : ViewModel() {
         val formatDecimals = DecimalFormat("#.00")
         return formatDecimals.format(number)
     }
-
 }
