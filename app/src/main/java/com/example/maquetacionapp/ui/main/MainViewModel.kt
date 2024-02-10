@@ -35,6 +35,7 @@ class MainViewModel : ViewModel() {
 
     private var listElemets: MutableList<Element> = mutableListOf()
     var listElementsFlow: Flow<List<Element>> = flow {
+        listElemets.clear()
         val totalElemens = totalRandomElements()
         var counter = 0
 
@@ -77,13 +78,13 @@ class MainViewModel : ViewModel() {
 
         val paragraphLength = Random.nextInt(minLength until maxLength)
         var paragraph = ""
-
+        
         for (i in 0..paragraphLength) {
             val charsPosition = Random.nextInt(chars.size)
             paragraph += chars[charsPosition]
         }
 
-        return paragraph
+        return paragraph.trim()
     }
 
     private fun createNumberRandom(): Double {

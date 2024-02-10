@@ -1,166 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeMain"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.main.MainActivity">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.main.MainActivity">
 
-        <TextView
-            android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/txtTitle"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/linearParagraphs"/>
 
-        <LinearLayout
-            android:id="@+id/linearParagraphs"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle"
-            app:layout_constraintBottom_toTopOf="@id/imgKotlin">
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
 
             <TextView
-                android:id="@+id/txtParagraph1"
+                android:id="@+id/txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/txtFirstParagraph"
+                android:layout_marginTop="10dp"
+                android:text="@string/txtTitle"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/linearParagraphs"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearParagraphs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/imgKotlin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitle">
+
+                <TextView
+                    android:id="@+id/txtParagraph1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/txtFirstParagraph"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtParagraph2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/txtSecondParagraph"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgKotlin"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="@string/contentImgKotlin"
+                android:src="@drawable/kotlin_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearParagraphs" />
+
+            <LinearLayout
+                android:id="@+id/linearElements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
+                android:paddingBottom="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgKotlin" />
+
+            <ImageButton
+                android:id="@+id/btnAddElement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imgAddElement"
+                android:padding="5dp"
+                android:src="@drawable/icon_add"
+                app:layout_constraintBottom_toBottomOf="@id/linearElements"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerDescription"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearElements" />
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circleIndicatorViewPager"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/viewPagerDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txtParagraph3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/txtThirdParagraph"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_marginStart="10dp"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="10dp"
-                />
+                app:layout_constraintEnd_toStartOf="@id/txtParagraph4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewPagerDescription" />
 
             <TextView
-                android:id="@+id/txtParagraph2"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtParagraph4"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="top"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/txtSecondParagraph"
+                android:text="@string/txtFourthParagraph"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/txtParagraph5"
+                app:layout_constraintStart_toEndOf="@id/txtParagraph3"
+                app:layout_constraintTop_toTopOf="@id/txtParagraph3"
+                tools:ignore="TextSizeCheck" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/txtParagraph5"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@string/txtFifthParagraph"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtParagraph4"
+                app:layout_constraintTop_toTopOf="@id/txtParagraph3"
+                tools:ignore="TextSizeCheck" />
 
-        <ImageView
-            android:id="@+id/imgKotlin"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:contentDescription="@string/contentImgKotlin"
-            android:src="@drawable/kotlin_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearParagraphs" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/linearElements"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:orientation="vertical"
-            android:layout_marginTop="5dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgKotlin">
-        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
-        <ImageButton
-            android:id="@+id/btnAddElement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:contentDescription="@string/imgAddElement"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/transparent"
-            android:padding="5dp"
-            android:src="@drawable/icon_add"
-            app:layout_constraintBottom_toBottomOf="@id/linearElements"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPagerDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearElements"/>
-
-        <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/circleIndicatorViewPager"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="@id/viewPagerDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/txtParagraph3"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="@string/txtThirdParagraph"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@id/txtParagraph4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerDescription"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <TextView
-            android:id="@+id/txtParagraph4"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txtFourthParagraph"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@id/txtParagraph5"
-            app:layout_constraintStart_toEndOf="@id/txtParagraph3"
-            app:layout_constraintTop_toTopOf="@id/txtParagraph3"
-            tools:ignore="TextSizeCheck" />
-
-        <TextView
-            android:id="@+id/txtParagraph5"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="@string/txtFifthParagraph"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/txtParagraph4"
-            app:layout_constraintTop_toTopOf="@id/txtParagraph3"
-            tools:ignore="TextSizeCheck" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>

@@ -61,4 +61,7 @@ dependencies {
     // CircleIndicator
     implementation("me.relex:circleindicator:2.1.6")
 
+    // Swiperefreshlayout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
 }
