@@ -78,7 +78,7 @@ class MainViewModel : ViewModel() {
 
         val paragraphLength = Random.nextInt(minLength until maxLength)
         var paragraph = ""
-        
+
         for (i in 0..paragraphLength) {
             val charsPosition = Random.nextInt(chars.size)
             paragraph += chars[charsPosition]
